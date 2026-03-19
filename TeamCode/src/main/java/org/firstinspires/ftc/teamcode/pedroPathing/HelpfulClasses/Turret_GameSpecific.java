@@ -581,7 +581,8 @@ public void aimTurretBlind(){
 
 
 
-
+//This was supposed to be a simple finite state machine to control the kicker
+//Never really ended up working well because I wrote it at ILT in between matches
     public void pumpFeed(int times){
         timesToFeed = times;
         feedState = FEEDSTATE.MOVING_UP;
