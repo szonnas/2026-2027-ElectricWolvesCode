@@ -1,3 +1,6 @@
+//Software Written by "Electric Wolves Coding Team"
+//Base Code accelerated using Claude AI (Anthropic)
+//Verified, tested, and debugged by Electric Wolves
 package org.firstinspires.ftc.teamcode.pedroPathing.Autons.NoTurret;
 
 import com.pedropathing.follower.Follower;
