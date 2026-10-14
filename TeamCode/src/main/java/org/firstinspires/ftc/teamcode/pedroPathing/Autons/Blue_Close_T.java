@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Turret_GameSpecific;
 
-
+/*
 @Autonomous(name = "BLUE CLOSE")
 public class Blue_Close_T extends OpMode {
     private Follower follower;

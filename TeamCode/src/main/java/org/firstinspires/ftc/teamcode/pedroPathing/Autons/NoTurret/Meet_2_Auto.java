@@ -22,6 +22,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.VelocityPID;
 import org.firstinspires.ftc.teamcode.pedroPathing.PID;
+/*
 @Disabled
 @Autonomous(name = "Meet 2 Auto", group = "Autonomous")
 public class Meet_2_Auto extends OpMode {

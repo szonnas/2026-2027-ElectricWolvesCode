@@ -47,6 +47,7 @@ Only fly1's encoder feeds the PID and both motors get the same power.
 
 Call init() once in init, then update() every loop.
  */
+/*
 public class Flywheel {
     private DcMotorEx fly1, fly2;
     private LynxModule hub;

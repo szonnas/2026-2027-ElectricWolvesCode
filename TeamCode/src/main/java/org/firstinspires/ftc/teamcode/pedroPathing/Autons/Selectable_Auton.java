@@ -17,7 +17,7 @@ An advanced version could be used to make it customizable. like before the match
 will go and what it will do by stringing together paths and actions
 IDK how hard it will be to implement though.
  */
-
+/*
 @Disabled
 @Autonomous(name="Selectable Auton")
 public class Selectable_Auton extends SelectableOpMode {

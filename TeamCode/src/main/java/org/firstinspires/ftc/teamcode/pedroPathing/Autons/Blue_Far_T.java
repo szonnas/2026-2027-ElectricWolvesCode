@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Turret_GameSpecific;
 
-
+/*
 @Autonomous(name = "BlUE FAR")
 public class Blue_Far_T extends OpMode {
     private Follower follower;

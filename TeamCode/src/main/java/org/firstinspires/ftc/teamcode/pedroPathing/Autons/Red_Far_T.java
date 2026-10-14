@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Autons.NoTurret.Meet_2_BLUECL
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Turret_GameSpecific;
 
-
+/*
 @Autonomous(name = "RED FAR")
 public class Red_Far_T extends OpMode {
     private Follower follower;

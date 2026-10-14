@@ -18,6 +18,7 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.OldGameSpecific;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.VelocityPID;
 import org.firstinspires.ftc.teamcode.pedroPathing.PID;
+/*
 @Disabled
 @Autonomous(name = "RED FAR", group = "Autonomous")
 public class Meet_2_REDFAR extends OpMode {

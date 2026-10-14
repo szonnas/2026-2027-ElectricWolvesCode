@@ -13,7 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VoltageUnit;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Turret_GameSpecific;
 import org.firstinspires.ftc.teamcode.pedroPathing.SERVO_POSITIONS;
-
+/*
 @TeleOp(name = "Manual TeleOp")
 public class Manual_Turret extends OpMode {
     TelemetryManager telemetryM;
