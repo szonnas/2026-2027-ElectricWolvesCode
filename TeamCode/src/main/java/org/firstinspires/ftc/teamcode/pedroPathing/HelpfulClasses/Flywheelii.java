@@ -32,7 +32,7 @@ first, and only use the first one's encoder for the PID (see the note in Velocit
 Call init() once in init, then update() every loop.
  */
 @Configurable
-public class FlywheelII {
+public class Flywheelii {
     // ---- Hardware ----
     public static String MOTOR_NAME = "flywheelII";
     public static boolean REVERSED = false;

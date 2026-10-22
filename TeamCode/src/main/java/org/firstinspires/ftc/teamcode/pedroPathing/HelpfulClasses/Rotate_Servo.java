@@ -33,7 +33,7 @@ Setup:
 These values are @Configurable so they can be changed live in Panels.
  */
 @Configurable
-public class RotateServo {
+public class Rotate_Servo {
     // ---- Hardware ----
     public static String SERVO_NAME = "rotateServo";
     public static boolean REVERSED = false;

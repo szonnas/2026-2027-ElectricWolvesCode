@@ -7,7 +7,8 @@ package org.firstinspires.ftc.teamcode.pedroPathing.teleops;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.FlywheelII;
+import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Flywheelii;
+import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Flywheelii;
 
 /*
 Launcher-only TeleOp (no drivetrain) for testing and tuning Flywheel II.
@@ -22,8 +23,8 @@ The controller rumbles once each time the wheel reaches the target speed, so you
 ready to launch. "Ready" means within READY_TOLERANCE ticks/sec of the target.
  */
 @TeleOp(name = "Flywheel II TeleOp")
-public class FlywheelII_TeleOp extends OpMode {
-    private final FlywheelII flywheelII = new FlywheelII();
+public class Flywheelii_TeleOp extends OpMode {
+    private final Flywheelii flywheelII = new Flywheelii();
 
     // Speeds in ticks/sec. Change these to whatever your shots need.
     private static final double PRESET_LOW = 1200;

@@ -7,7 +7,7 @@ package org.firstinspires.ftc.teamcode.pedroPathing.teleops;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.RotateServo;
+import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Rotate_Servo;
 
 /*
 Servo-only TeleOp for testing the rotate-and-return servo.
@@ -19,8 +19,8 @@ Gamepad 1:
 Pressing A while it's already moving does nothing.
  */
 @TeleOp(name = "Rotate Servo TeleOp")
-public class RotateServo_TeleOp extends OpMode {
-    private final RotateServo rotateServo = new RotateServo();
+public class Rotate_Servo_TeleOp extends OpMode {
+    private final Rotate_Servo rotateServo = new Rotate_Servo();
 
     @Override
     public void init() {
