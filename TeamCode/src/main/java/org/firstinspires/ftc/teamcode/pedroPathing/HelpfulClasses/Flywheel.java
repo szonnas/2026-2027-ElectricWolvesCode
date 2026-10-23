@@ -25,7 +25,7 @@ Only fly1's encoder feeds the PID and both motors get the same power.
 Call init() once in init, then update() every loop.
  */
 public class Flywheel {
-    private DcMotorEx fly1, fly2;
+    private DcMotorEx flywheel, fly2;
     private LynxModule hub;
     private VelocityPID_wStatic pid;
 
@@ -38,18 +38,18 @@ public class Flywheel {
     public void init(HardwareMap hardwareMap) {
         hub = hardwareMap.getAll(LynxModule.class).get(0);
 
-        fly1 = (DcMotorEx) hardwareMap.dcMotor.get("fly1");
-        fly2 = (DcMotorEx) hardwareMap.dcMotor.get("fly2");
+        flywheel = (DcMotorEx) hardwareMap.dcMotor.get("fly1");
 
-        fly1.setDirection(DcMotorEx.Direction.FORWARD);
-        fly2.setDirection(DcMotorEx.Direction.REVERSE);
-        fly1.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
-        fly2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
-        fly1.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
-        fly2.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
 
-        fly1.setPower(0);
-        fly2.setPower(0);
+        flywheel.setDirection(DcMotorEx.Direction.FORWARD);
+
+        flywheel.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
+
+        flywheel.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+
+
+        flywheel.setPower(0);
+
         running = false;
     }
 
@@ -63,8 +63,8 @@ public class Flywheel {
 
     public void off() {
         running = false;
-        fly1.setPower(0);
-        fly2.setPower(0);
+        flywheel.setPower(0);
+
     }
 
     public void toggle() {
@@ -84,19 +84,19 @@ public class Flywheel {
     }
 
     public double getVelocity() {
-        return fly1.getVelocity();
+        return flywheel.getVelocity();
     }
 
     // True once the wheel is within the tolerance (ticks/sec) of the target
     public boolean atSpeed(double tolerance) {
-        return running && Math.abs(fly1.getVelocity() - targetSpeed) < tolerance;
+        return running && Math.abs(flywheel.getVelocity() - targetSpeed) < tolerance;
     }
 
     // Call every loop
     public void update() {
         if (!running) return;
-        double power = pid.update(targetSpeed, fly1.getVelocity(), hub.getInputVoltage(VoltageUnit.VOLTS));
-        fly1.setPower(power);
-        fly2.setPower(power);
+        double power = pid.update(targetSpeed, flywheel.getVelocity(), hub.getInputVoltage(VoltageUnit.VOLTS));
+        flywheel.setPower(power);
+
     }
 }

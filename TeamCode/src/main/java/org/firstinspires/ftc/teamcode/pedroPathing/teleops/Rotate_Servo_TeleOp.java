@@ -13,8 +13,9 @@ import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Rotate_Servo;
 Servo-only TeleOp for testing the rotate-and-return servo.
 
 Gamepad 1:
-  A = rotate 60 degrees, hold, then return to rest automatically
-  X = cancel and return to rest immediately
+  A = turn out, hold, then turn back automatically
+  X = cancel and turn back right away
+  B = emergency stop (stops spinning where it is)
 
 Pressing A while it's already moving does nothing.
  */
@@ -25,7 +26,7 @@ public class Rotate_Servo_TeleOp extends OpMode {
     @Override
     public void init() {
         rotateServo.init(hardwareMap);
-        telemetry.addLine("Rotate servo ready. A = rotate and return, X = return to rest");
+        telemetry.addLine("Rotate servo ready. A = turn and return, X = return, B = stop");
         telemetry.update();
     }
 
@@ -33,13 +34,14 @@ public class Rotate_Servo_TeleOp extends OpMode {
     public void loop() {
         if (gamepad1.aWasPressed()) rotateServo.trigger();
         if (gamepad1.xWasPressed()) rotateServo.returnToRest();
+        if (gamepad1.bWasPressed()) rotateServo.stop();
 
         // Must be called every loop so it knows when to return to rest
         rotateServo.update();
 
         telemetry.addData("State", rotateServo.getState());
-        telemetry.addData("Servo position", rotateServo.getPosition());
-        telemetry.addData("Rotated position", rotateServo.getTargetPosition());
+        telemetry.addData("Servo power", rotateServo.getPower());
+        telemetry.addData("Spin time (ms)", Rotate_Servo.SPIN_TIME_MS);
         telemetry.update();
     }
 }
