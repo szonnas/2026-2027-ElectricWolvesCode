@@ -109,4 +109,3 @@ public class Flywheelii {
         motor.setPower(power);
     }
 }
-//hi
