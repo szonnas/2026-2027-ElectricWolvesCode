@@ -97,3 +97,7 @@ public class Drive_TeleOp extends OpMode {
         flywheel.off();
     }
 }
+
+//Software Written by "Electric Wolves Coding Team"
+//Base Code accelerated using Claude AI (Anthropic)
+//Verified, tested, and debugged by Electric Wol

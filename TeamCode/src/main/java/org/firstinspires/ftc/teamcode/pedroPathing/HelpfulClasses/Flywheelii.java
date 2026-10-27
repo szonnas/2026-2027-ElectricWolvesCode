@@ -35,7 +35,7 @@ Call init() once in init, then update() every loop.
 public class Flywheelii {
     // ---- Hardware ----
     public static String MOTOR_NAME = "flywheelII";
-    public static boolean REVERSED = false;
+    public static boolean REVERSED = true;
 
     // ---- PID (starting values, tune these) ----
     public static double kP = 0;

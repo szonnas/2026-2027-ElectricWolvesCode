@@ -88,7 +88,7 @@ public class Constants {
     // for ROTATE_SERVO_SPIN_TIME_MS. Tune that number until it turns as far as you want.
     // Panels can still override these live while tuning.
     public static String ROTATE_SERVO_NAME = "rotateServo";   // name in the hardware config (type: Continuous Rotation Servo)
-    public static boolean ROTATE_SERVO_REVERSED = false;      // flip if it spins the wrong way
+    public static boolean ROTATE_SERVO_REVERSED = true;      // flip if it spins the wrong way
     public static double ROTATE_SERVO_POWER = 1;            // spin speed, 0 to 1
     public static double ROTATE_SERVO_SPIN_TIME_MS = 2000;     // how long it spins out (sets how far it turns)
     public static double ROTATE_SERVO_HOLD_TIME_MS = 500;     // wait at the end before spinning back
