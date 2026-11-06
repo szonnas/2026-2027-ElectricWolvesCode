@@ -48,7 +48,7 @@ public class Main_TeleOp extends OpMode {
 
     // Launcher speeds in ticks/sec. Change these to whatever your shots need.
     private static final double PRESET_LOW = 1200;
-    private static final double PRESET_MID = 1750;
+    private static final double PRESET_MID = 1890;
     private static final double PRESET_HIGH = 2100;
 
     // How close (ticks/sec) the launcher has to be to the target to count as ready
@@ -84,6 +84,7 @@ public class Main_TeleOp extends OpMode {
         rotateServo.init(hardwareMap);
 
         telemetry.addLine("Main TeleOp ready (needs gamepad 1 and gamepad 2)");
+        telemetry.addData("Intake reversed", intake.isReversed());
         telemetry.update();
     }
 
@@ -115,7 +116,9 @@ public class Main_TeleOp extends OpMode {
         rightRear.setPower(rr / max);
 
         // ================= Gamepad 1: intake =================
-        if (gamepad1.aWasPressed()) intake.toggle();
+        intake.setReverse(gamepad1.left_bumper);         // backward only while held
+        boolean intakeTogglePressed = gamepad1.aWasPressed();
+        if (intakeTogglePressed && !intake.isReversed()) intake.toggle();   // A is ignored while reversing
         if (gamepad1.dpadUpWasPressed()) intake.adjustSpeed(intake.step);
         if (gamepad1.dpadDownWasPressed()) intake.adjustSpeed(-intake.step);
         intake.update();
