@@ -47,14 +47,14 @@ public class Auto_Launch_And_Drive extends LinearOpMode {
     private static final double DRIVE_TIME_MS = 1500;      // how long it drives (sets the distance, tune this)
     private static final boolean TURN_OFF_BEFORE_DRIVING = false;
 
-    // ---- Launcher speed in ticks/sec (1750 is the medium preset). The intake always runs at its max speed. ----
-    private static final double LAUNCHER_SPEED = 1890;
+    // ---- Launcher speed in ticks/sec (1890 is the medium preset). The intake always runs at its max speed. ----
+    private static final double LAUNCHER_SPEED = 1800;
 
     // ---- Drive wheel direction fixes (same as Main_TeleOp) ----
     private static final boolean FLIP_LEFT_FRONT = false;
-    private static final boolean FLIP_LEFT_REAR = true;
+    private static final boolean FLIP_LEFT_REAR = false;
     private static final boolean FLIP_RIGHT_FRONT = true;
-    private static final boolean FLIP_RIGHT_REAR = false;
+    private static final boolean FLIP_RIGHT_REAR = true;
 
     private DcMotorEx leftFront, leftRear, rightFront, rightRear;
     private final Flywheel intake = new Flywheel();          // the "Flywheel" class is really the intake

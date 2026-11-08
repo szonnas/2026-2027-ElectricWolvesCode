@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.pedroPathing.HelpfulClasses.Flywheel;
@@ -21,6 +22,7 @@ Gamepad 1 (driver):
   Left stick = drive, right stick x = turn, right trigger = slow down, left trigger (held) = reverse
   A             = intake on/off          (the intake is the class called Flywheel)
   D-pad up/down = intake speed +/- one step
+  Left bumper   = HOLD to run the intake backward. Let go and it goes back to how it was (on or off).
 
 Gamepad 2 (operator):
   A             = launcher on/off        (the launcher is Flywheelii)
@@ -37,8 +39,11 @@ Hardware config names needed: the four drive motors (from Constants.driveConstan
 "flywheelII" (launcher), and "rotateServo" (Continuous Rotation Servo).
 
 The drivetrain is a plain robot-centric mecanum drive (no Pedro, no odometry), same as Drive_TeleOp.
- */
 
+Wheel direction fixes: the four FLIP_ settings below reverse one wheel's direction in THIS TeleOp only
+(Constants.java and the autons are not changed). If a wheel drives the robot backward when it should drive
+it forward, set its FLIP_ to true. If you flip a wheel that was already right, set it back to false.
+ */
 @TeleOp(name = "Main TeleOp")
 public class Main_TeleOp extends OpMode {
     private DcMotorEx leftFront, leftRear, rightFront, rightRear;
@@ -54,12 +59,13 @@ public class Main_TeleOp extends OpMode {
     // How close (ticks/sec) the launcher has to be to the target to count as ready
     private static final double READY_TOLERANCE = 50;
 
-    private boolean wasReady = false;
-
+    // Drive wheel direction fixes (this TeleOp only). Flip a wheel if it drives the robot the wrong way.
     private static final boolean FLIP_LEFT_FRONT = false;
-    private static final boolean FLIP_LEFT_REAR = true;
-    private static final boolean FLIP_RIGHT_FRONT = true;
+    private static final boolean FLIP_LEFT_REAR = false;
+    private static final boolean FLIP_RIGHT_FRONT = false;
     private static final boolean FLIP_RIGHT_REAR = false;
+
+    private boolean wasReady = false;
 
     @Override
     public void init() {
@@ -73,6 +79,11 @@ public class Main_TeleOp extends OpMode {
         rightFront.setDirection(Constants.driveConstants.getRightFrontMotorDirection());
         rightRear.setDirection(Constants.driveConstants.getRightRearMotorDirection());
 
+        if (FLIP_LEFT_FRONT) leftFront.setDirection(flip(leftFront.getDirection()));
+        if (FLIP_LEFT_REAR) leftRear.setDirection(flip(leftRear.getDirection()));
+        if (FLIP_RIGHT_FRONT) rightFront.setDirection(flip(rightFront.getDirection()));
+        if (FLIP_RIGHT_REAR) rightRear.setDirection(flip(rightRear.getDirection()));
+
         for (DcMotorEx m : new DcMotorEx[]{leftFront, leftRear, rightFront, rightRear}) {
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -84,7 +95,6 @@ public class Main_TeleOp extends OpMode {
         rotateServo.init(hardwareMap);
 
         telemetry.addLine("Main TeleOp ready (needs gamepad 1 and gamepad 2)");
-        telemetry.addData("Intake reversed", intake.isReversed());
         telemetry.update();
     }
 
@@ -149,6 +159,7 @@ public class Main_TeleOp extends OpMode {
 
         // ================= Telemetry =================
         telemetry.addData("Intake running", intake.isRunning());
+        telemetry.addData("Intake reversed", intake.isReversed());
         telemetry.addData("Intake target / actual", "%.0f / %.0f", intake.targetSpeed, intake.getVelocity());
         telemetry.addData("Launcher running", launcher.isRunning());
         telemetry.addData("Launcher ready", ready);
@@ -157,6 +168,12 @@ public class Main_TeleOp extends OpMode {
         telemetry.addData("Wheel power LF / LR", "%.2f / %.2f", lf / max, lr / max);
         telemetry.addData("Wheel power RF / RR", "%.2f / %.2f", rf / max, rr / max);
         telemetry.update();
+    }
+
+    private static DcMotorSimple.Direction flip(DcMotorSimple.Direction d) {
+        return d == DcMotorSimple.Direction.FORWARD
+                ? DcMotorSimple.Direction.REVERSE
+                : DcMotorSimple.Direction.FORWARD;
     }
 
     @Override
